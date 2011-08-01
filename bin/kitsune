@@ -1,0 +1,15 @@
+#!/usr/local/bin/node
+var Kitsune = require('../');
+function toPort(x) { 
+  return (x = Number(x)) >= 0 ? x : false; 
+}
+var port = toPort(process.argv[2]) || 8585;
+var kit = new Kitsune({insecure: true});
+var oldEmit = kit.emit;
+kit.emit = function emit(event) {
+  console.log('EVENT',event);
+  console.dir.apply(console,[].slice.call(arguments,1));
+  oldEmit.apply(this, arguments);
+}
+kit.listen(port);
+console.log('Kistune REST API listening on HTTP with PORT ', kit.servers[0].address().port);

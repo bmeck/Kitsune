@@ -1,0 +1,11 @@
+{
+  "name" : "kitsune",
+  "version" : "0.0.0",
+  "main" : "lib/kitsune.js",
+  "dependencies" : {
+    "journey": "0.4.x"
+  },
+  "bin" : {
+    "kitsune" : "bin/kitsune"
+  }
+}
